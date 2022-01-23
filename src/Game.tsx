@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+
 import { Row, RowState } from "./Row";
 import dictionary from "./dictionary.json";
 import { Clue, clue, describeClue, violation } from "./clue";
@@ -7,13 +8,13 @@ import targetList from "./targets.json";
 import {
   dictionarySet,
   Difficulty,
+  getChallengeUrl,
   pick,
   resetRng,
-  seed,
   speak,
   urlParam,
 } from "./util";
-import { decode, encode } from "./base64";
+import { decode } from "./base64";
 
 enum GameState {
   Playing,
@@ -36,15 +37,6 @@ function randomTarget(wordLength: number): string {
     candidate = pick(eligible);
   } while (/\*/.test(candidate));
   return candidate;
-}
-
-function getChallengeUrl(target: string): string {
-  return (
-    window.location.origin +
-    window.location.pathname +
-    "?challenge=" +
-    encode(target)
-  );
 }
 
 let initChallenge = "";
@@ -70,6 +62,9 @@ function Game(props: GameProps) {
       : `Make your first guess!`
   );
   const [challenge, setChallenge] = useState<string>(initChallenge);
+
+  const [author, setAuthor] = useState<string>(urlParam("author") ?? "");
+
   const [wordLength, setWordLength] = useState(
     challenge ? challenge.length : 5
   );
@@ -204,10 +199,7 @@ function Game(props: GameProps) {
           min="4"
           max="11"
           id="wordLength"
-          disabled={
-            gameState === GameState.Playing &&
-            (guesses.length > 0 || currentGuess !== "" || challenge !== "")
-          }
+          disabled={true}
           value={wordLength}
           onChange={(e) => {
             const length = Number(e.target.value);
@@ -219,6 +211,8 @@ function Game(props: GameProps) {
             setTarget(randomTarget(length));
             setWordLength(length);
             setHint(`${length} letters`);
+            setAuthor("");
+            setChallenge("");
           }}
         ></input>
         <button
@@ -250,36 +244,32 @@ function Game(props: GameProps) {
         {hint || `\u00a0`}
       </p>
       <Keyboard letterInfo={letterInfo} onKey={onKey} />
-      {gameState !== GameState.Playing && !challenge && (
-        <p>
-          <button
-            onClick={() => {
-              const url = getChallengeUrl(target);
-              if (!navigator.clipboard) {
-                setHint(url);
-              } else {
-                navigator.clipboard
-                  .writeText(url)
-                  .then(() => {
-                    setHint("Challenge link copied to clipboard!");
-                  })
-                  .catch(() => {
-                    setHint(url);
-                  });
-              }
-            }}
-          >
-            Challenge a friend to this word
-          </button>
-        </p>
-      )}
+      <p>
+        <button
+          onClick={() => {
+            const url = getChallengeUrl(target, author);
+            if (!navigator.clipboard) {
+              setHint(url);
+            } else {
+              navigator.clipboard
+                .writeText(url)
+                .then(() => {
+                  setHint("Challenge link copied to clipboard!");
+                })
+                .catch(() => {
+                  setHint(url);
+                });
+            }
+          }}
+        >
+          Challenge a friend to this word
+        </button>
+      </p>
       {challenge ? (
-        <div className="Game-seed-info">playing a challenge game</div>
-      ) : seed ? (
         <div className="Game-seed-info">
-          seed {seed}, length {wordLength}, game {gameNumber}
+          playing a challenge game{author ? ` by ${author}` : ""}
         </div>
-      ) : undefined}
+      ) : null}
     </div>
   );
 }

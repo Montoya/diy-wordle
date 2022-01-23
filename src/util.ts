@@ -1,3 +1,4 @@
+import { encode } from "./base64";
 import dictionary from "./dictionary.json";
 
 export enum Difficulty {
@@ -62,3 +63,13 @@ export function ordinal(n: number): string {
 
 export const englishNumbers =
   "zero one two three four five six seven eight nine ten eleven".split(" ");
+
+export function getChallengeUrl(target: string, author: string): string {
+  return (
+    window.location.origin +
+    window.location.pathname +
+    "?challenge=" +
+    encode(target) +
+    (author ? `&author=${author}` : "")
+  );
+}

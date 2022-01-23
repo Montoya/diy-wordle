@@ -1,8 +1,10 @@
-import "./App.css";
-import { maxGuesses, seed } from "./util";
-import Game from "./Game";
 import { useEffect, useState } from "react";
+
+import "./App.css";
+import { maxGuesses, urlParam } from "./util";
+import Game from "./Game";
 import { About } from "./About";
+import CreateChallenge from "./CreateChallenge";
 
 function useSetting<T>(
   key: string,
@@ -27,8 +29,11 @@ function useSetting<T>(
 }
 
 function App() {
-  type Page = "game" | "about" | "settings";
-  const [page, setPage] = useState<Page>("game");
+  type Page = "game" | "about" | "settings" | "create";
+
+  const challengeUrl = urlParam("challenge");
+
+  const [page, setPage] = useState<Page>(challengeUrl ? "game" : "create");
   const prefersDark =
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -69,8 +74,8 @@ function App() {
         o wordl
       </h1>
       <div className="top-right">
-        {page !== "game" ? (
-          link("❌", "Close", "game")
+        {page !== "game" && page !== "create" ? (
+          link("❌", "Close", urlParam("challenge") ? "game" : "create")
         ) : (
           <>
             {link("❓", "About", "about")}
@@ -86,16 +91,8 @@ function App() {
           visibility: page === "game" ? "visible" : "hidden",
         }}
       >
-        <a
-          href="#"
-          onClick={() =>
-            (document.location = seed
-              ? "?"
-              : "?seed=" +
-                new Date().toISOString().replace(/-/g, "").slice(0, 8))
-          }
-        >
-          {seed ? "Random" : "Today's"}
+        <a href="#" onClick={() => (document.location = "?")}>
+          Create Challenge
         </a>
       </div>
       {page === "about" && <About />}
@@ -148,6 +145,7 @@ function App() {
         hidden={page !== "game"}
         difficulty={difficulty}
       />
+      {page === "create" ? <CreateChallenge /> : ""}
     </div>
   );
 }
