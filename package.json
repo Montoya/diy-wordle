@@ -1,8 +1,8 @@
 {
-  "name": "wordl",
+  "name": "DIYwordle",
   "version": "0.1.0",
-  "homepage": "http://hellowordl.net/",
-  "private": false,
+  "homepage": "https://diywordle.homerow.club",
+  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
