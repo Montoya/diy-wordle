@@ -70,6 +70,29 @@ export function getChallengeUrl(target: string, author: string): string {
     window.location.pathname +
     "?challenge=" +
     encode(target) +
-    (author ? `&author=${author}` : "")
+    (author ? `&author=${encodeURIComponent(author)}` : "")
   );
+}
+
+export function makeMysteryBoard(len: number): string { 
+  var board = "";
+  //for(var i = 0; i < 6; i++) { 
+	for(var j = 0; j < len; j++) {
+		var rand = Math.floor(Math.random() * 10);
+		if(rand > 8) { 
+			board += "⁉️"; 
+		}
+		else if(rand > 6) { 
+			board += "❓"; 
+		}
+		else if(rand > 3) { 
+			board += "❔";
+		}
+		else { 
+			board += "⬜"; 
+		}
+	}
+	//board += "\n"; 
+  //}
+  return board; 
 }

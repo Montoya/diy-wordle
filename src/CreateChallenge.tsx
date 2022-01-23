@@ -1,9 +1,9 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 
-import { dictionarySet, getChallengeUrl } from "./util";
+import { dictionarySet, getChallengeUrl, makeMysteryBoard } from "./util";
 
 const CreateChallenge = () => {
-  const [hint, setHint] = useState("Enter a word (4-11 letters)");
+  const [hint, setHint] = useState("Enter a word (4-7 letters)");
   const [enteredWord, setEnteredWord] = useState("");
   const [author, setAuthor] = useState("");
   const [enteredWordIsValid, setEnteredWordIsValid] = useState(false);
@@ -11,10 +11,10 @@ const CreateChallenge = () => {
   useEffect(() => {
     const checkEnteredWordValidity = (): void => {
       if (enteredWord.length < 4) {
-        setHint("Enter a word (4-11 letters)");
+        setHint("Enter a word (4-7 letters)");
         setEnteredWordIsValid(false);
-      } else if (enteredWord.length > 11) {
-        setHint("Maximum length is 11 letters!");
+      } else if (enteredWord.length > 7) {
+        setHint("Maximum length is 7 letters!");
         setEnteredWordIsValid(false);
       } else if (!dictionarySet.has(enteredWord)) {
         setHint("Enter a real word");
@@ -28,7 +28,8 @@ const CreateChallenge = () => {
   }, [enteredWord, enteredWordIsValid]);
 
   const wordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setEnteredWord(event.target.value);
+	let target = "" + event.target.value; 
+    setEnteredWord(target.toLowerCase());
   };
 
   const authorChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -86,12 +87,15 @@ const CreateChallenge = () => {
       <button
         disabled={!enteredWordIsValid}
         onClick={() => {
-          const url = getChallengeUrl(enteredWord, "author");
+          const url = getChallengeUrl(enteredWord, author);
           if (!navigator.clipboard) {
             setHint(url);
           } else {
+			// wrap URL in a message 
+			let mysteryBoard = makeMysteryBoard(enteredWord.length); 
+			let msg = "Play my #DIYwordle: "+url+" \n"+mysteryBoard; 
             navigator.clipboard
-              .writeText(url)
+              .writeText(msg)
               .then(() => {
                 setHint("Challenge link copied to clipboard!");
               })
@@ -101,7 +105,7 @@ const CreateChallenge = () => {
           }
         }}
       >
-        Create Challenge link
+        Create my DIY Wordle link
       </button>
     </div>
   );
