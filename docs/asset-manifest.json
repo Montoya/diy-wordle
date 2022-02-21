@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/diywordle/static/css/main.646d3666.css",
+    "main.css": "/diywordle/static/css/main.8efb1e14.css",
     "main.js": "/diywordle/static/js/main.0a83870f.js",
     "index.html": "/diywordle/index.html",
-    "main.646d3666.css.map": "/diywordle/static/css/main.646d3666.css.map",
+    "main.8efb1e14.css.map": "/diywordle/static/css/main.8efb1e14.css.map",
     "main.0a83870f.js.map": "/diywordle/static/js/main.0a83870f.js.map"
   },
   "entrypoints": [
-    "static/css/main.646d3666.css",
+    "static/css/main.8efb1e14.css",
     "static/js/main.0a83870f.js"
   ]
 }

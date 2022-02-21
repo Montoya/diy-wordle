@@ -167,6 +167,8 @@ a:active {
 
 #createForm {
   display:table;
+  padding-bottom:6px;
+  margin:0 auto; 
 }
 .Create-input-container { 
   display:table-row;
@@ -174,6 +176,9 @@ a:active {
 .Create-input-container label, .Create-input-container span { 
   display:table-cell;
   padding-bottom:8px;
+}
+.Create-input-container label { 
+  padding-right:12px; 
 }
 
 .App-about {
