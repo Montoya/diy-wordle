@@ -145,10 +145,7 @@ a:active {
 }
 
 .Game-options {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
+  display: none;
 }
 
 .Game-options > * + * {
