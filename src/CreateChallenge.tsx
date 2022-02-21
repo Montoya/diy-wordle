@@ -50,40 +50,42 @@ const CreateChallenge = () => {
 
   return (
     <div>
-      <div className="Create-input-container">
-        <label
-          className={`Create-input-label${
-            !enteredWordIsValid && enteredWord.length > 3 ? " invalid" : ""
-          }`}
-          htmlFor="enteredWord"
-        >
-          Word
-        </label>
-        <input
-          className={`Create-input-field${
-            !enteredWordIsValid && enteredWord.length > 3 ? " invalid" : ""
-          }`}
-          name="enteredWord"
-          type="text"
-          onChange={wordChangeHandler}
-          value={enteredWord}
-          onKeyDown={keydownHandler}
-        />
-      </div>
-      <div className="Create-input-container">
-        <label className="Create-input-label" htmlFor="author">
-          Author
-        </label>
-        <input
-          className="Create-input-field"
-          name="author"
-          type="text"
-          onChange={authorChangeHandler}
-          value={author}
-          onKeyDown={keydownHandler2}
-        />
-      </div>
-      <p>{hint}</p>
+	  <p>{hint}</p>
+	  <div id="createForm">
+		  <div className="Create-input-container">
+			<label
+			  className={`Create-input-label${
+				!enteredWordIsValid && enteredWord.length > 3 ? " invalid" : ""
+			  }`}
+			  htmlFor="enteredWord"
+			>
+			  Word
+			</label>
+			<span><input
+			  className={`Create-input-field${
+				!enteredWordIsValid && enteredWord.length > 3 ? " invalid" : ""
+			  }`}
+			  name="enteredWord"
+			  type="text"
+			  onChange={wordChangeHandler}
+			  value={enteredWord}
+			  onKeyDown={keydownHandler}
+			/></span>
+		  </div>
+		  <div className="Create-input-container">
+			<label className="Create-input-label" htmlFor="author">
+			  Author
+			</label>
+			<span><input
+			  className="Create-input-field"
+			  name="author"
+			  type="text"
+			  onChange={authorChangeHandler}
+			  value={author}
+			  onKeyDown={keydownHandler2}
+			/></span>
+		  </div>
+	  </div>
       <button
         disabled={!enteredWordIsValid}
         onClick={() => {

@@ -43,7 +43,7 @@ body {
 }
 
 .App-container h1 {
-  margin-top: 0;
+  margin-top: 8px;
 }
 
 .Game,
@@ -163,6 +163,17 @@ a:active {
   margin: -1rem 0 2rem 0;
   font-size: 80%;
   line-height: 1.5;
+}
+
+#createForm {
+  display:table;
+}
+.Create-input-container { 
+  display:table-row;
+}
+.Create-input-container label, .Create-input-container span { 
+  display:table-cell;
+  padding-bottom:8px;
 }
 
 .App-about {

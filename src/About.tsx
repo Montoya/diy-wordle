@@ -6,15 +6,18 @@ export function About() {
   return (
     <div className="App-about">
       <p>
-        <i>hello wordl</i> is a remake of the word game{" "}
+        <i>DIY Wordle</i> is a spinoff of the word game{" "}
         <a href="https://www.powerlanguage.co.uk/wordle/">
           <i>Wordle</i>
         </a>{" "}
-        by <a href="https://twitter.com/powerlanguish">powerlanguage</a>, which
-        I think is based on the TV show <i>Lingo</i>.
+        by <a href="https://twitter.com/powerlanguish">powerlanguage</a>.
       </p>
+	  <p>It is based on the open-source &ldquo;hello wordl&rdquo; by <a href="https://github.com/lynn/hello-wordl">Lynn</a>.</p>
+	  <p>With DIY Wordle, you can create and share your own Wordle puzzles, and play Wordle puzzles made by others!</p>
       <p>
-        You get {maxGuesses} tries to guess a target word.
+        How to play: 
+		<br />
+		You get {maxGuesses} tries to guess a target word.
         <br />
         After each guess, you get Mastermind-style feedback.
       </p>
@@ -76,9 +79,7 @@ export function About() {
         <a href="https://twitter.com/chordbug">@chordbug</a>.
       </p>
       <p>
-        This game will be free and ad-free forever,
-        <br />
-        but you can <a href="https://ko-fi.com/chordbug">buy me a coffee</a> if you'd like.
+        Brought to you by <a href="https://homerow.club">HomeRow</a> and <a href="https://twitter.com/frozen_a_b">@frozen_a_b</a>.
       </p>
     </div>
   );
