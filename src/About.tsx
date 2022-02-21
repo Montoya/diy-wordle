@@ -75,8 +75,7 @@ export function About() {
       />
       <p>
         Report issues{" "}
-        <a href="https://github.com/lynn/hello-wordl/issues">here</a>, or tweet{" "}
-        <a href="https://twitter.com/chordbug">@chordbug</a>.
+        <a href="https://github.com/Montoya/diy-wordle/issues">here</a>.
       </p>
       <p>
         Brought to you by <a href="https://homerow.club">HomeRow</a> and <a href="https://twitter.com/frozen_a_b">@frozen_a_b</a>.

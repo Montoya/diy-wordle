@@ -244,6 +244,11 @@ function Game(props: GameProps) {
         {hint || `\u00a0`}
       </p>
       <Keyboard letterInfo={letterInfo} onKey={onKey} />
+	  {challenge ? (
+        <div className="Game-seed-info">
+          playing a challenge game{author ? ` by ${author}` : ""}
+        </div>
+      ) : null}
       <p>
         <button
           onClick={() => {
@@ -265,11 +270,6 @@ function Game(props: GameProps) {
           Challenge a friend to this word
         </button>
       </p>
-      {challenge ? (
-        <div className="Game-seed-info">
-          playing a challenge game{author ? ` by ${author}` : ""}
-        </div>
-      ) : null}
     </div>
   );
 }

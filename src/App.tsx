@@ -75,11 +75,8 @@ function App() {
           </>
         )}
       </div>
-      <div
+      <div className="top-left" 
         style={{
-          position: "absolute",
-          left: 5,
-          top: 5,
           visibility: page === "game" ? "visible" : "hidden",
         }}
       >
