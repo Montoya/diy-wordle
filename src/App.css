@@ -202,7 +202,6 @@ a:active {
 }
 
 .Game-seed-info {
-  opacity: 0.5;
   margin-top: 1em;
   font-variant-numeric: tabular-nums;
 }
