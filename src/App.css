@@ -7,6 +7,11 @@ body {
   background-color: #fff;
 }
 
+button {
+  font-size:16px;
+  padding:4px 8px; 
+}
+
 .Row {
   display: flex;
   align-items: center;
@@ -165,17 +170,17 @@ a:active {
 #createForm {
   display:table;
   padding-bottom:6px;
-  margin:0 auto; 
+  margin:0 auto;
 }
-.Create-input-container { 
+.Create-input-container {
   display:table-row;
 }
-.Create-input-container label, .Create-input-container span { 
+.Create-input-container label, .Create-input-container span {
   display:table-cell;
   padding-bottom:8px;
 }
-.Create-input-container label { 
-  padding-right:12px; 
+.Create-input-container label {
+  padding-right:12px;
 }
 
 .App-about {
@@ -243,10 +248,10 @@ a:active {
   top: 5px;
   right: 5px;
 }
-.top-left { 
+.top-left {
   position: absolute;
   top: 16px;
-  left: 5px; 
+  left: 5px;
 }
 
 .emoji-link {
