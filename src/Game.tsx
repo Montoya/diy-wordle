@@ -253,11 +253,11 @@ function Game(props: GameProps) {
         <button
           onClick={() => {
             const url = getChallengeUrl(target, author);
+			let msg = "Play this #DIYwordle: "+url;  
+			if(author) { msg += " by "+author; }
             if (!navigator.clipboard) {
-              setHint(url);
+              setHint(msg);
             } else {
-  			      let msg = "Play this #DIYwordle: "+url;
-              if(author) { msg += " by "+author; }
               if(
                 /android|iphone|ipad|ipod|webos/i.test(navigator.userAgent) &&
                 !/firefox/i.test(navigator.userAgent)
@@ -265,7 +265,7 @@ function Game(props: GameProps) {
                 navigator.share({ text: msg }).then(() => {
                   return;
                 }).catch(() => {
-                  setHint(url);
+                  setHint(msg);
                 });
               }
               else {
@@ -275,21 +275,9 @@ function Game(props: GameProps) {
                     setHint("Challenge link copied to clipboard!");
                   })
                   .catch(() => {
-                    setHint(url);
+                    setHint(msg);
                   });
               }
-
-
-
-
-              navigator.clipboard
-                .writeText(url)
-                .then(() => {
-                  setHint("Challenge link copied to clipboard!");
-                })
-                .catch(() => {
-                  setHint(url);
-                });
             }
           }}
         >
