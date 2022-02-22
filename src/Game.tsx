@@ -246,7 +246,7 @@ function Game(props: GameProps) {
       <Keyboard letterInfo={letterInfo} onKey={onKey} />
 	  {challenge ? (
         <div className="Game-seed-info">
-          playing a challenge game{author ? ` by ${author}` : ""}
+          Playing a challenge game{author ? ` by ${author}` : ""}
         </div>
       ) : null}
       <p>
