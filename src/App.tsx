@@ -75,13 +75,13 @@ function App() {
           </>
         )}
       </div>
-      <div className="top-left" 
+      <div className="top-left"
         style={{
           visibility: page === "game" ? "visible" : "hidden",
         }}
       >
         <a href="#" onClick={() => (document.location = "?")}>
-          Create Challenge
+          Create
         </a>
       </div>
       {page === "about" && <About />}
