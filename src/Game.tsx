@@ -255,11 +255,11 @@ function Game(props: GameProps) {
         <button
           onClick={() => {
             const url = getChallengeUrl(target, author);
-			let msg = "Play this #DIYwordle: "+url;  
+			let msg = "I challenge you to a custom wordle: "+url;  
 			if(author) { msg += " by "+author; }
-			
+			msg += " #DIYwordle"; 
 			if(gameState !== GameState.Playing) { 
-				msg = "DIY Wordle!\n\n" + guesses
+				msg = guesses
                     .map((guess) =>
                       clue(guess, target)
                         .map((c) => ["⬛", "🟨", "🟩"][c.clue ?? 0])
