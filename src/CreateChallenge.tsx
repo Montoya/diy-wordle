@@ -28,7 +28,7 @@ const CreateChallenge = () => {
   }, [enteredWord, enteredWordIsValid]);
 
   const wordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-	let target = "" + event.target.value; 
+	let target = "" + event.target.value;
     setEnteredWord(target.toLowerCase());
   };
 
@@ -93,17 +93,30 @@ const CreateChallenge = () => {
           if (!navigator.clipboard) {
             setHint(url);
           } else {
-			// wrap URL in a message 
-			let mysteryBoard = makeMysteryBoard(enteredWord.length); 
-			let msg = "Play my #DIYwordle: "+url+" \n"+mysteryBoard; 
-            navigator.clipboard
-              .writeText(msg)
-              .then(() => {
-                setHint("Challenge link copied to clipboard!");
-              })
-              .catch(() => {
+			      // wrap URL in a message
+			      let mysteryBoard = makeMysteryBoard(enteredWord.length);
+			      let msg = "Play my #DIYwordle: "+url+" \n"+mysteryBoard;
+
+            if(
+              /android|iphone|ipad|ipod|webos/i.test(navigator.userAgent) &&
+              !/firefox/i.test(navigator.userAgent)
+            ) {
+              navigator.share({ text: msg }).then(() => {
+                return;
+              }).catch(() => {
                 setHint(url);
               });
+            }
+            else {
+              navigator.clipboard
+                .writeText(msg)
+                .then(() => {
+                  setHint("Challenge link copied to clipboard!");
+                })
+                .catch(() => {
+                  setHint(url);
+                });
+            }
           }
         }}
       >

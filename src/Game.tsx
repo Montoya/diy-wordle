@@ -256,6 +256,32 @@ function Game(props: GameProps) {
             if (!navigator.clipboard) {
               setHint(url);
             } else {
+  			      let msg = "Play this #DIYwordle: "+url;
+              if(author) { msg += " by "+author; }
+              if(
+                /android|iphone|ipad|ipod|webos/i.test(navigator.userAgent) &&
+                !/firefox/i.test(navigator.userAgent)
+              ) {
+                navigator.share({ text: msg }).then(() => {
+                  return;
+                }).catch(() => {
+                  setHint(url);
+                });
+              }
+              else {
+                navigator.clipboard
+                  .writeText(msg)
+                  .then(() => {
+                    setHint("Challenge link copied to clipboard!");
+                  })
+                  .catch(() => {
+                    setHint(url);
+                  });
+              }
+
+
+
+
               navigator.clipboard
                 .writeText(url)
                 .then(() => {
