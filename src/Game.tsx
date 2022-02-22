@@ -62,6 +62,7 @@ function Game(props: GameProps) {
       : `Make your first guess!`
   );
   const [challenge, setChallenge] = useState<string>(initChallenge);
+  const [challengeText, setChallengeText] = useState<string>("Challenge a friend to this word"); 
 
   const [author, setAuthor] = useState<string>(urlParam("author") ?? "");
 
@@ -133,6 +134,7 @@ function Game(props: GameProps) {
       if (currentGuess === target) {
         setHint(gameOver("won"));
         setGameState(GameState.Won);
+		setChallengeText("Share your result and challenge a friend"); 
       } else if (guesses.length + 1 === props.maxGuesses) {
         setHint(gameOver("lost"));
         setGameState(GameState.Lost);
@@ -255,6 +257,16 @@ function Game(props: GameProps) {
             const url = getChallengeUrl(target, author);
 			let msg = "Play this #DIYwordle: "+url;  
 			if(author) { msg += " by "+author; }
+			
+			if(gameState !== GameState.Playing) { 
+				msg = "DIY Wordle!\n\n" + guesses
+                    .map((guess) =>
+                      clue(guess, target)
+                        .map((c) => ["⬛", "🟨", "🟩"][c.clue ?? 0])
+                        .join("")
+                    )
+                    .join("\n") + "\n\n" + msg; 
+			}
             if (!navigator.clipboard) {
               setHint(msg);
             } else {
@@ -281,7 +293,7 @@ function Game(props: GameProps) {
             }
           }}
         >
-          Challenge a friend to this word
+			{challengeText}
         </button>
       </p>
     </div>
