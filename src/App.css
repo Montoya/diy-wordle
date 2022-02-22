@@ -93,7 +93,7 @@ table.Game-rows > tbody {
   padding: 2px;
   text-transform: capitalize;
   border-radius: 4px;
-  min-height: 40px;
+  min-height: 54px;
   display: flex;
   flex: 1;
   align-items: center;
