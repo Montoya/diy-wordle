@@ -78,7 +78,7 @@ export function About() {
         <a href="https://github.com/Montoya/diy-wordle/issues">here</a>.
       </p>
       <p>
-        Brought to you by <a href="https://homerow.club">HomeRow</a> and <a href="https://twitter.com/frozen_a_b">@frozen_a_b</a>.
+        Brought to you by <a href="https://homerow.club">Home Row</a> and <a href="https://twitter.com/frozen_a_b">@frozen_a_b</a>.
       </p>
     </div>
   );
