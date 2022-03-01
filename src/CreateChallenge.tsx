@@ -94,8 +94,8 @@ const CreateChallenge = () => {
             setHint(url);
           } else {
 			      // wrap URL in a message
-			      let mysteryBoard = makeMysteryBoard(enteredWord.length);
-			      let msg = "I challenge you to a custom wordle: "+url+" \n"+mysteryBoard+" #DIYWordle";
+			      // let mysteryBoard = makeMysteryBoard(enteredWord.length);
+			      let msg = "I challenge you to a custom wordle: "+url/*+" \n"+mysteryBoard+" #DIYWordle"*/;
 
             if(
               /android|iphone|ipad|ipod|webos/i.test(navigator.userAgent) &&
