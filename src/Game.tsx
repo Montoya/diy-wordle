@@ -259,7 +259,7 @@ function Game(props: GameProps) {
 			if(author) { msg += " by "+author; }
 			// msg += " #DIYwordle"; 
 			if(gameState !== GameState.Playing) { 
-				msg = "Custom Wordle " + guesses.length + "/6\n" + guesses
+				msg = "Custom Wordle " + guesses.length + "/6\n\n" + guesses
                     .map((guess) =>
                       clue(guess, target)
                         .map((c) => ["⬛", "🟨", "🟩"][c.clue ?? 0])
