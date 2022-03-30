@@ -13,7 +13,7 @@ In 2021, Josh "powerlanguage" Wardle created _Wordle_, a version of the Lingo wo
 
 lynn liked this game a lot, but wanted to play more than once a day, so she created her own version of it, where the words are random but you can play as much as you like. She called it _hello wordl_, which is a sort of [bad programming joke](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program).
 
-I saw people were using pencil and paper to make their own Wordles for others to play, so I decided to make this work online with DIY Wordle. Frozen B.A. helped me make it work!
+I saw people were using pencil and paper to make their own Wordles for others to play, so I decided to make this work online with DIY Wordle. [Frozen A. B.](https://twitter.com/frozen_a_b) helped me make it work!
 
 ## But playing once a day is the point!
 Don't get me wrong: we all think this is the most brilliant aspect of Wordle, and we don't aim to dethrone or improve on the "real" game.
