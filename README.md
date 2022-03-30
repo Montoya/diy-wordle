@@ -1,5 +1,5 @@
 # DIY Wordle
-Make your own [Wordle](https://www.powerlanguage.co.uk/wordle/) and invite friends to play it!
+Make your own [Wordle](https://www.powerlanguage.co.uk/wordle/) and invite friends to play it. [Try it now!](https://diywordle.com)
 
 ## Introduction
 Wordle is a word game similar to the TV show [Lingo](https://en.wikipedia.org/wiki/Lingo_(British_game_show)).
